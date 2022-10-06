@@ -11,17 +11,17 @@ import SwiftUI
 struct TabbedStartView: View {
     var body: some View {
         TabView {
+            GroupedBCView()
+                .tabItem {
+                    Image("Grouped")
+                    Text("Grouped Bar Chart")
+                }
             BCView()
                 .tabItem {
                     Image("BarChart")
                     Text("Bar Chart")
                 }
 
-            GroupedBCView()
-                .tabItem {
-                    Image("Grouped")
-                    Text("Grouped Bar Chart")
-                }
             PCView()
                 .tabItem {
                     Image(systemName: "chart.pie")

@@ -9,12 +9,9 @@ import SwiftUI
 
 struct PieChart: UIViewRepresentable {
     var entries: [PieChartDataEntry]
+    var total: Double
     let pieChart = PieChartView()
-    @Binding var category: Wine.Category
-    var descriptionText:String
-    var defaultCenterText: String {
-        category.rawValue.capitalized
-    }
+    var defaultCenterText: String = "%"
 
     func makeUIView(context: Context) -> PieChartView {
         pieChart.delegate = context.coordinator
@@ -25,15 +22,21 @@ struct PieChart: UIViewRepresentable {
         setChartData(uiView)
         configureChart(uiView)
         formatCenter(uiView)
-        formatDescription(description: uiView.chartDescription)
+//        formatDescription(description: uiView.chartDescription)
         formatLegend(legend: uiView.legend)
         uiView.notifyDataSetChanged()
     }
 
     func setChartData(_ pieChart: PieChartView) {
         let dataSet = PieChartDataSet(entries: entries)
-        dataSet.colors = ChartColorTemplates.colorful()
+        dataSet.colors = []
+        entries.forEach { entry in
+            if let color = entry.data as? UIColor {
+                dataSet.colors.append(color)
+            }
+        }
         let pieChartData = PieChartData(dataSet: dataSet)
+
         pieChart.data = pieChartData
         formatDataSet(dataSet: dataSet)
     }
@@ -46,7 +49,10 @@ struct PieChart: UIViewRepresentable {
         pieChart.noDataText = "No Data"
         pieChart.rotationEnabled = false
         pieChart.animate(yAxisDuration: 0.5, easingOption: .easeInOutCirc)
-        pieChart.drawEntryLabelsEnabled = false
+//        pieChart.drawEntryLabelsEnabled = false
+        pieChart.data?.setValueTextColor(.white)
+        pieChart.data?.setValueFont(.boldSystemFont(ofSize: 30))
+        pieChart.usePercentValuesEnabled = true
         pieChart.highlightValue(x: -1, dataSetIndex: 0, callDelegate: false)
     }
     
@@ -54,32 +60,32 @@ struct PieChart: UIViewRepresentable {
         pieChart.holeColor = UIColor.systemBackground
         pieChart.centerTextRadiusPercent = 0.95
         pieChart.centerAttributedText = PieChart.setCenterText(defaultCenterText)
+
     }
 
-    func formatDescription(description: Description) {
-        description.text = descriptionText
-        description.font = UIFont.boldSystemFont(ofSize: 17)
-    }
+//    func formatDescription(description: Description) {
+//        description.font = UIFont.boldSystemFont(ofSize: 17)
+//        description.textColor = .systemBlue
+//    }
 
     func formatLegend(legend: Legend) {
         legend.enabled = false
     }
     
-    static func setCenterText(_ text: String) -> NSAttributedString{
-        let font = UIFont.systemFont(ofSize: 17)
+    static func setCenterText(_ text: String, color: UIColor = .black) -> NSAttributedString{
+        let font = UIFont.systemFont(ofSize: 40, weight: .bold)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.alignment = .center
         let attributes: [NSAttributedString.Key: Any] = [
             .font: font,
-            .foregroundColor: UIColor.label,
+            .foregroundColor: color,
             .paragraphStyle: paragraphStyle
         ]
         let centerText = NSAttributedString(string: text, attributes: attributes)
         return centerText
     }
 
-    
 
     class Coordinator: NSObject, ChartViewDelegate {
         var parent: PieChart
@@ -88,15 +94,11 @@ struct PieChart: UIViewRepresentable {
         }
 
         func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-            let lableText = (entry.value(forKey: "label")! as! String)
-            let numText =  Int(entry.value(forKey: "value")! as! Double)
-            parent.pieChart.centerAttributedText = setCenterText("""
-\(lableText)
-\(numText) bottles.
-""")
+            let value =  entry.value(forKey: "value")! as! Double
+            let color = entry.data as? UIColor
+            parent.pieChart.centerAttributedText = setCenterText("\(value / parent.total * 100)%", color: color!)
         }
     }
-
 
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
@@ -106,12 +108,8 @@ struct PieChart: UIViewRepresentable {
 
 struct PieChart_Previews: PreviewProvider {
     static var previews: some View {
-        PieChart(entries: Wine.winesForCategory(.variety,
-                                                wines: Wine.allWines),
-                 category: .constant(.variety),
-                 descriptionText: "Variety")
+        PieChart(entries: Token.tokensForHalf(tokens: Token.allTokens), total: Token.getTotal())
             .frame(height: 400)
             .padding(.horizontal)
-
     }
 }

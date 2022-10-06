@@ -9,23 +9,42 @@ import SwiftUI
 import Charts
 
 struct PCView: View {
-    @State private var category: Wine.Category = .variety
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("My Wineries and Varieties")
-                    .font(.title)
-                Text("Tap on a slice for detailed information")
-                    .font(.caption)
-                PieChart(entries: Wine.winesForCategory(category, wines: Wine.allWines),
-                         category: $category,
-                         descriptionText: category.rawValue.capitalized)
+                Text("이번 달 나의 코인 평가 금액")
+                    .font(.title2)
+                    .foregroundColor(.gray)
+                    .bold()
+                Text("4,500,000원")
+                    .font(.largeTitle)
+                    .bold()
+                Divider()
+                PieChart(entries: Token.tokensForHalf(tokens: Token.allTokens), total: Token.getTotal())
                 .frame(height: 400)
-                Picker(selection: $category, label: Text("duh")) {
-                    Text("Varieties").tag(Wine.Category.variety)
-                    Text("Wineries").tag(Wine.Category.winery)
-                }.pickerStyle(SegmentedPickerStyle())
+                Divider()
+                ForEach(Token.allTokens.indices) { index in
+                    let token = Token.allTokens[index]
+                    HStack {
+                        if #available(iOS 15.0, *) {
+                            Circle()
+                                .frame(width: 20)
+                                .foregroundColor(Color(uiColor: token.color))
+                            Text(token.label)
+                                .bold()
+                                .font(.title)
+                            Text("\((token.value / Token.getTotal()).formatted(.percent))")
+                                .bold()
+                                .font(.title)
+                                .foregroundColor(.gray)
+                            Spacer()
+                            Text("\(token.value.formatted(.number))원")
+                                .font(.title)
+                        } else {
 
+                        }
+                    }
+                }
             }
             .padding(.horizontal)
         }

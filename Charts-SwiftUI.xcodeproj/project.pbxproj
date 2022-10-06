@@ -11,6 +11,7 @@
 		037ABB2228ED45C40076B8F3 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 037ABB2128ED45C40076B8F3 /* Charts */; };
 		037ABB2628ED4B1C0076B8F3 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2528ED4B1C0076B8F3 /* Money.swift */; };
 		037ABB2928EE5F4E0076B8F3 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2828EE5F4E0076B8F3 /* Coin.swift */; };
+		037ABB2B28EE72970076B8F3 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2A28EE72970076B8F3 /* Token.swift */; };
 		BB13C890257470C700650A1D /* CombinedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13C88F257470C700650A1D /* CombinedChartView.swift */; };
 		BB2757842576120E003022E2 /* CombinedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2757812576120E003022E2 /* CombinedMarker.swift */; };
 		BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB776A9E2568C346006BDCEF /* BalloonMarker.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		037ABB2528ED4B1C0076B8F3 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		037ABB2828EE5F4E0076B8F3 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		037ABB2A28EE72970076B8F3 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		BB13C88F257470C700650A1D /* CombinedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartView.swift; sourceTree = "<group>"; };
 		BB2757812576120E003022E2 /* CombinedMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedMarker.swift; sourceTree = "<group>"; };
 		BB776A9E2568C346006BDCEF /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				BBB0DBFD25744420005457D8 /* Sale.swift */,
 				037ABB2528ED4B1C0076B8F3 /* Money.swift */,
 				037ABB2828EE5F4E0076B8F3 /* Coin.swift */,
+				037ABB2A28EE72970076B8F3 /* Token.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				BBB0DBFE25744420005457D8 /* Sale.swift in Sources */,
 				BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */,
 				BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */,
+				037ABB2B28EE72970076B8F3 /* Token.swift in Sources */,
 				BBC3C5B32562029300E3FFFD /* Charts_SwiftUIApp.swift in Sources */,
 				BB2757842576120E003022E2 /* CombinedMarker.swift in Sources */,
 				037ABB2628ED4B1C0076B8F3 /* Money.swift in Sources */,
