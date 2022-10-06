@@ -10,6 +10,7 @@
 		037ABB1F28ED45B70076B8F3 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 037ABB1E28ED45B70076B8F3 /* Algorithms */; };
 		037ABB2228ED45C40076B8F3 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 037ABB2128ED45C40076B8F3 /* Charts */; };
 		037ABB2628ED4B1C0076B8F3 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2528ED4B1C0076B8F3 /* Money.swift */; };
+		037ABB2928EE5F4E0076B8F3 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2828EE5F4E0076B8F3 /* Coin.swift */; };
 		BB13C890257470C700650A1D /* CombinedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13C88F257470C700650A1D /* CombinedChartView.swift */; };
 		BB2757842576120E003022E2 /* CombinedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2757812576120E003022E2 /* CombinedMarker.swift */; };
 		BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB776A9E2568C346006BDCEF /* BalloonMarker.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		037ABB2528ED4B1C0076B8F3 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		037ABB2828EE5F4E0076B8F3 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		BB13C88F257470C700650A1D /* CombinedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartView.swift; sourceTree = "<group>"; };
 		BB2757812576120E003022E2 /* CombinedMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedMarker.swift; sourceTree = "<group>"; };
 		BB776A9E2568C346006BDCEF /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				BB92BA1325676E8900D0FB13 /* Wine.swift */,
 				BBB0DBFD25744420005457D8 /* Sale.swift */,
 				037ABB2528ED4B1C0076B8F3 /* Money.swift */,
+				037ABB2828EE5F4E0076B8F3 /* Coin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				BBF4266225662EBC00BCC31D /* GroupedBCView.swift in Sources */,
 				BBC3C5B52562029300E3FFFD /* BCView.swift in Sources */,
 				BBB0DC02257449C4005457D8 /* CombinedChart.swift in Sources */,
+				037ABB2928EE5F4E0076B8F3 /* Coin.swift in Sources */,
 				BBD53E4C256603F600C68F55 /* GroupedBarChart.swift in Sources */,
 				BBD8978E256857AA001404F3 /* TabbedStartView.swift in Sources */,
 				BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */,

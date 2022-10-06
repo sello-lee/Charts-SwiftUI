@@ -9,7 +9,6 @@ import Charts
 import Foundation
 
 struct Money {
-    static var monthArray = ["1월", "2월", "3월", "4월", "5월", "6월", "7월"]
     var month: Double
     var quantity: Double
 
@@ -18,6 +17,7 @@ struct Money {
         Money(month: -1, quantity: 0)
     }
 
+    static var monthArray = ["1월", "2월", "3월", "4월", "5월", "6월", "7월"]
     static func moneysForHalf(money: [Money]) -> [BarChartDataEntry] {
         return money.map { BarChartDataEntry(x: $0.month, y: $0.quantity)}
     }

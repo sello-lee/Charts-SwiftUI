@@ -9,26 +9,52 @@ import SwiftUI
 import Charts
 
 struct LineChrtView: View {
-    @State private var year = 2019
+    @State var klayButton: Bool = true
+    @State var scnrButton: Bool = true
+    @State var maticButton: Bool = true
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("My Wine Consumption")
-                    .font(.title)
-                VStack {
-                    Text("Tap on a point to see information")
-                    Text("Swipe from right to see more months.")
+                Text("총 코인 수량 추이")
+                    .font(.largeTitle)
+                    .bold()
+                Text("2022년 기준 월별 코인 수량 변화를 알려드려요.")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .bold()
+                HStack {
+                    Button("KLAY") {
+                        klayButton.toggle()
+                    }
+                    .padding(10)
+                    .background(klayButton ? Color.pink : Color.white)
+                    .foregroundColor(klayButton ? .white : .pink)
+                    .border(Color.pink)
+                    Button("SCNR") {
+                        scnrButton.toggle()
+                    }
+                    .padding(10)
+                    .background(scnrButton ? Color.green : Color.white)
+                    .foregroundColor(scnrButton ? .white : .green)
+                    .border(Color.green)
+                    Button("MATIC") {
+                        maticButton.toggle()
+                    }
+                    .padding(10)
+                    .background(maticButton ? Color.purple : Color.white)
+                    .foregroundColor(maticButton ? .white : .purple)
+                    .border(Color.purple)
                 }
-                .font(.caption)
-                Picker(selection: $year, label: Text("Year"), content: {
-                    Text("2019").tag(2019)
-                    Text("2020").tag(2020)
-                })
-                .pickerStyle(SegmentedPickerStyle())
                 LineChart(
-                    entriesIn: Transaction.lineChartDataForYear(year, transactions: Transaction.allTransactions, itemType: .itemIn),
-                    entriesOut: Transaction.lineChartDataForYear(year, transactions: Transaction.allTransactions, itemType: .itemOut))
-                .frame(height: 400)
+                    klay: Coin.coinsForHalf(coins: Coin.allCoins, coinType: .KLAY),
+                    scnr: Coin.coinsForHalf(coins: Coin.allCoins, coinType: .SCNR),
+                    matic: Coin.coinsForHalf(coins: Coin.allCoins, coinType: .MATIC),
+                    klayButton: $klayButton,
+                    scnrButton: $scnrButton,
+                    maticButton: $maticButton
+                )
+                .frame(height: 200)
                 .padding(.horizontal)
             }
         }
