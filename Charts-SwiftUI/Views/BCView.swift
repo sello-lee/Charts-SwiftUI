@@ -10,36 +10,24 @@ import Charts
 
 struct BCView: View {
 
-    @State private var selectedItem:Transaction = Transaction.initialItem(year: 2019)
+    @State private var selectedItem: Money = Money.initialItem()
+
     var body: some View {
-        VStack {
-            Text("My Wine Consumption")
-                .font(.title)
-            Picker(selection: $selectedItem.year, label: Text("Year"), content: {
-                Text("2019").tag(2019)
-                Text("2020").tag(2020)
-            })
-            .pickerStyle(SegmentedPickerStyle())
-            BarChart(selectedItem: $selectedItem,
-                     entries: Transaction.transactionsForYear(selectedItem.year,
-                                                              transactions: Transaction.allTransactions))
-                
-                .frame(height: 300)
-            if selectedItem.month != -1 {
-                Text("\(Int(selectedItem.quantity)) for \(Transaction.monthArray[Int(selectedItem.month)])")
-            } else {
-                Text(" ")
-            }
+        GeometryReader { geometry in
             VStack {
-                Text("Swipe from right to see more months.")
-                Text("Tap on a bar to see detail.")
+                Text("총 자산 추이")
+                    .font(.largeTitle)
+                    .bold()
+                Text("지난달 보다 +3,000,000원 늘었어요")
+                    .font(.title2)
+                    .foregroundColor(.gray)
+                    .bold()
+                BarChart(selectedItem: $selectedItem,
+                         entries: Money.moneysForHalf(money: Money.allMoney))
+                .frame(height: 300)
             }
-                .font(.caption)
+            .padding(.horizontal)
         }
-        .onChange(of: selectedItem.year, perform: { value in
-            selectedItem.month = -1
-        })
-        .padding(.horizontal)
     }
 }
 

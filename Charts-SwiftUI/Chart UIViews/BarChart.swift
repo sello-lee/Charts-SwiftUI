@@ -9,7 +9,7 @@ import Charts
 import SwiftUI
 
 struct BarChart : UIViewRepresentable {
-    @Binding var selectedItem: Transaction
+    @Binding var selectedItem: Money
     var entries : [BarChartDataEntry]
     let barChart = BarChartView()
     func makeUIView(context: Context) -> BarChartView {
@@ -34,11 +34,17 @@ struct BarChart : UIViewRepresentable {
     }
     
     func formatDataSet(dataSet: BarChartDataSet) {
-        dataSet.label = "Wine Consumption"
+        dataSet.label = ""
         dataSet.highlightAlpha = 0.2
-        dataSet.colors = [.red]
+        dataSet.colors = []
+        dataSet.valueColors = []
+        entries.forEach { entry in
+            dataSet.colors.append(entry.y > 0 ? .systemBlue : .systemPink)
+            dataSet.valueColors.append(entry.y > 0 ? .systemBlue : .systemPink)
+        }
         let format = NumberFormatter()
         format.numberStyle = .none
+        dataSet.valueFont = .boldSystemFont(ofSize: 15)
         dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
     }
     
@@ -46,36 +52,34 @@ struct BarChart : UIViewRepresentable {
         barChart.noDataText = "No Data"
         barChart.rightAxis.enabled = false
         barChart.setScaleEnabled(false)
-        if barChart.scaleX == 1.0 {
-            barChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
-        }
         if selectedItem.month == -1 {
             barChart.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
             barChart.highlightValue(nil, callDelegate: false)
         }
+        
         barChart.fitBars = true
+        barChart.dragXEnabled = false
     }
 
     func formatXAxis(xAxis: XAxis) {
         xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
-        xAxis.labelTextColor =  .red
+        xAxis.drawGridLinesEnabled = false
+        xAxis.drawAxisLineEnabled = false
+        xAxis.valueFormatter = IndexAxisValueFormatter(values: Money.monthArray)
+        xAxis.labelTextColor = .gray
+        xAxis.labelFont = .boldSystemFont(ofSize: 15)
+
     }
 
     func formatLeftAxis(leftAxis:YAxis) {
-        let leftAxisFormatter = NumberFormatter()
-        leftAxisFormatter.numberStyle = .none
-        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-        leftAxis.axisMinimum = 0
-        leftAxis.labelTextColor =  .red
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.drawAxisLineEnabled = false
+        leftAxis.drawZeroLineEnabled = true
+        leftAxis.drawLabelsEnabled = false
     }
 
     func formatLegend(legend: Legend) {
-        legend.textColor = UIColor.red
-        legend.horizontalAlignment = .right
-        legend.verticalAlignment = .top
-        legend.drawInside = true
-        //        legend.yOffset = 30.0
+        legend.enabled = false
     }
     
     class Coordinator: NSObject, ChartViewDelegate {
@@ -97,8 +101,7 @@ struct BarChart : UIViewRepresentable {
 
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(selectedItem: .constant(Transaction.selectedItem),
-                 entries: Transaction.transactionsForYear(2019,
-                                                          transactions: Transaction.allTransactions))
+        BarChart(selectedItem: .constant(Money.selectedItem),
+                 entries: Money.moneysForHalf(money: Money.allMoney))
     }
 }

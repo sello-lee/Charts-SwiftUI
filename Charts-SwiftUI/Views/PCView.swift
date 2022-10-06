@@ -11,23 +11,24 @@ import Charts
 struct PCView: View {
     @State private var category: Wine.Category = .variety
     var body: some View {
-        VStack {
-            Text("My Wineries and Varieties")
-                .font(.title)
-            Text("Tap on a slice for detailed information")
-                .font(.caption)
-            PieChart(entries: Wine.winesForCategory(category, wines: Wine.allWines),
-                     category: $category,
-                     descriptionText: category.rawValue.capitalized)
+        GeometryReader { geometry in
+            VStack {
+                Text("My Wineries and Varieties")
+                    .font(.title)
+                Text("Tap on a slice for detailed information")
+                    .font(.caption)
+                PieChart(entries: Wine.winesForCategory(category, wines: Wine.allWines),
+                         category: $category,
+                         descriptionText: category.rawValue.capitalized)
                 .frame(height: 400)
-            Picker(selection: $category, label: Text("duh")) {
-                Text("Varieties").tag(Wine.Category.variety)
-                Text("Wineries").tag(Wine.Category.winery)
-            }.pickerStyle(SegmentedPickerStyle())
-            
-        }
-        .padding(.horizontal)
+                Picker(selection: $category, label: Text("duh")) {
+                    Text("Varieties").tag(Wine.Category.variety)
+                    Text("Wineries").tag(Wine.Category.winery)
+                }.pickerStyle(SegmentedPickerStyle())
 
+            }
+            .padding(.horizontal)
+        }
     }
 }
 
