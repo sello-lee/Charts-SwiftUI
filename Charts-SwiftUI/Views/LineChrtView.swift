@@ -10,7 +10,7 @@ import Charts
 
 struct LineChrtView: View {
     @State var buttonDic: [String:Bool] = [:]
-    private var coins = Coin.allCoins
+    @State private var coins = Coin.allCoins
 
     var body: some View {
         GeometryReader { geometry in
@@ -23,26 +23,33 @@ struct LineChrtView: View {
                     .foregroundColor(.gray)
                     .bold()
                 HStack {
-                    ForEach(0..<coins.count) { i in
-                        Button(coins[i].name) {
-                            guard let dic = buttonDic[coins[i].name] else {
-                                buttonDic[coins[i].name] = true
-                                return
-                            }
-                            buttonDic[coins[i].name] = !dic
-//                                buttonDic[coin.name] = true
-                            print("hi")
-                        }
-                        .padding(10)
-                        .border(coins[i].color)
-                        .background(buttonDic[coins[i].name] ?? false ? coins[i].color : Color.white)
-                        .foregroundColor(buttonDic[coins[i].name] ?? false  ? .white : coins[i].color)
+                    Button(coins[0].name) {
+                        coins[0].show = !coins[0].show
                     }
+                    .padding(10)
+                    .border(coins[0].color)
+                    .background(coins[0].show ? coins[0].color : Color.white)
+                    .foregroundColor(coins[0].show ? .white : coins[0].color)
+                    Button(coins[1].name) {
+                        coins[1].show = !coins[1].show
+                    }
+                    .padding(10)
+                    .border(coins[1].color)
+                    .background(coins[1].show ? coins[1].color : Color.white)
+                    .foregroundColor(coins[1].show ? .white : coins[1].color)
                 }
-//                    LineChart(
-//                        coins: coins,
-//                        buttonDic: $buttonDic
-//                    )
+//                    HStack {
+//                        ForEach(0..<coins.indices) { i in
+//                            Button(coins[i].name) {
+//                                coins[i].show.toggle()
+//                            }
+//                            .padding(10)
+//                            .border(coins[i].color)
+//                            .background(coins[i].show ? coins[i].color : Color.white)
+//                            .foregroundColor(coins[i].show ? .white : coins[i].color)
+//                        }
+//                    }
+                LineChart(coins: $coins)
                 .frame(height: 200)
                 .padding(.horizontal)
             }

@@ -1,8 +1,8 @@
 //
 //  Coin.swift
-//  Charts-SwiftUI
+//  KlipApp
 //
-//  Created by sello on 06/10/2022.
+//  Created by sello on 07/10/2022.
 //
 
 import SwiftUI
@@ -48,11 +48,14 @@ struct Coin {
     var name: String
     var quotes: [Quote]
     var color: Color
+    @Binding var show: Bool
+    @State static var show1 = true
+    @State static var show2 = true
 
     static var allCoins: [Coin] {
         [
-            Coin(name: "Bitcoin", quotes: Quote.bitcoinQuotes, color: .orange),
-            Coin(name: "Ethereum", quotes: Quote.ethereumQuotes, color: .black)
+            Coin(name: "Bitcoin", quotes: Quote.bitcoinQuotes, color: .orange, show: $show1),
+            Coin(name: "Ethereum", quotes: Quote.ethereumQuotes, color: .black, show: $show2)
         ]
     }
 }

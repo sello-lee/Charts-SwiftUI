@@ -10,8 +10,7 @@ import SwiftUI
 
 struct LineChart: UIViewRepresentable {
     let lineChart = LineChartView()
-    var coins: [Coin]
-    @Binding var buttonDic: [String:Bool]
+    @Binding var coins: [Coin]
 
     func makeUIView(context: Context) -> LineChartView {
         return lineChart
@@ -33,8 +32,7 @@ struct LineChart: UIViewRepresentable {
             let quotes = coin.quotes
             let data = LineChartDataSet(entries: Quote.coinsForHalf(quotes: quotes))
             formatDataSet(dataSet: data, label: coin.name, color: UIColor(coin.color))
-            guard let flag = buttonDic[coin.name] else { return }
-            if flag { dataSets.append(data) }
+            if coin.show { dataSets.append(data) }
         }
 
         let lineChartData = LineChartData(dataSets: dataSets)
@@ -90,14 +88,10 @@ struct LineChart: UIViewRepresentable {
 }
 
 struct LineChart_Previews: PreviewProvider {
-    @State static var buttonDic: [String:Bool] = [:]
-    static var coins = Coin.allCoins
+    @State static var coins = Coin.allCoins
 
     static var previews: some View {
-        LineChart(
-            coins: coins,
-            buttonDic: $buttonDic
-        )
+        LineChart(coins: $coins)
         .frame(height: 400)
         .padding(.horizontal)
     }
