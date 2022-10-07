@@ -23,15 +23,15 @@ struct LineChrtView: View {
                     .foregroundColor(.gray)
                     .bold()
                     HStack {
-                        ForEach(0..<coins.indices) { index in
-                            let i = Int(index)
-                            Button(coins[i].name) {
-                                coins[i].show.toggle()
+                        ForEach(coins.indices) { index in
+                            let coin = coins[index]
+                            Button(coin.name) {
+                                coins[index].show.toggle()
                             }
                             .padding(10)
-                            .border(coins[i].color)
-                            .background(coins[i].show ? coins[i].color : Color.white)
-                            .foregroundColor(coins[i].show ? .white : coins[i].color)
+                            .border(coin.color)
+                            .background(coin.show ? coin.color : Color.white)
+                            .foregroundColor(coin.show ? .white : coin.color)
                         }
                     }
                 LineChart(coins: $coins)
