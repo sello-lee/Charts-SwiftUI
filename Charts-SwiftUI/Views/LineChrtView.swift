@@ -22,33 +22,18 @@ struct LineChrtView: View {
                     .font(.headline)
                     .foregroundColor(.gray)
                     .bold()
-                HStack {
-                    Button(coins[0].name) {
-                        coins[0].show = !coins[0].show
+                    HStack {
+                        ForEach(0..<coins.indices) { index in
+                            let i = Int(index)
+                            Button(coins[i].name) {
+                                coins[i].show.toggle()
+                            }
+                            .padding(10)
+                            .border(coins[i].color)
+                            .background(coins[i].show ? coins[i].color : Color.white)
+                            .foregroundColor(coins[i].show ? .white : coins[i].color)
+                        }
                     }
-                    .padding(10)
-                    .border(coins[0].color)
-                    .background(coins[0].show ? coins[0].color : Color.white)
-                    .foregroundColor(coins[0].show ? .white : coins[0].color)
-                    Button(coins[1].name) {
-                        coins[1].show = !coins[1].show
-                    }
-                    .padding(10)
-                    .border(coins[1].color)
-                    .background(coins[1].show ? coins[1].color : Color.white)
-                    .foregroundColor(coins[1].show ? .white : coins[1].color)
-                }
-//                    HStack {
-//                        ForEach(0..<coins.indices) { i in
-//                            Button(coins[i].name) {
-//                                coins[i].show.toggle()
-//                            }
-//                            .padding(10)
-//                            .border(coins[i].color)
-//                            .background(coins[i].show ? coins[i].color : Color.white)
-//                            .foregroundColor(coins[i].show ? .white : coins[i].color)
-//                        }
-//                    }
                 LineChart(coins: $coins)
                 .frame(height: 200)
                 .padding(.horizontal)
