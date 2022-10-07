@@ -9,9 +9,8 @@ import SwiftUI
 import Charts
 
 struct LineChrtView: View {
-    @State var klayButton: Bool = true
-    @State var scnrButton: Bool = true
-    @State var maticButton: Bool = true
+    @State var buttonDic: [String:Bool] = [:]
+    private var coins = Coin.allCoins
 
     var body: some View {
         GeometryReader { geometry in
@@ -24,36 +23,26 @@ struct LineChrtView: View {
                     .foregroundColor(.gray)
                     .bold()
                 HStack {
-                    Button("KLAY") {
-                        klayButton.toggle()
+                    ForEach(0..<coins.count) { i in
+                        Button(coins[i].name) {
+                            guard let dic = buttonDic[coins[i].name] else {
+                                buttonDic[coins[i].name] = true
+                                return
+                            }
+                            buttonDic[coins[i].name] = !dic
+//                                buttonDic[coin.name] = true
+                            print("hi")
+                        }
+                        .padding(10)
+                        .border(coins[i].color)
+                        .background(buttonDic[coins[i].name] ?? false ? coins[i].color : Color.white)
+                        .foregroundColor(buttonDic[coins[i].name] ?? false  ? .white : coins[i].color)
                     }
-                    .padding(10)
-                    .background(klayButton ? Color.pink : Color.white)
-                    .foregroundColor(klayButton ? .white : .pink)
-                    .border(Color.pink)
-                    Button("SCNR") {
-                        scnrButton.toggle()
-                    }
-                    .padding(10)
-                    .background(scnrButton ? Color.green : Color.white)
-                    .foregroundColor(scnrButton ? .white : .green)
-                    .border(Color.green)
-                    Button("MATIC") {
-                        maticButton.toggle()
-                    }
-                    .padding(10)
-                    .background(maticButton ? Color.purple : Color.white)
-                    .foregroundColor(maticButton ? .white : .purple)
-                    .border(Color.purple)
                 }
-                LineChart(
-                    klay: Coin.coinsForHalf(coins: Coin.allCoins, coinType: .KLAY),
-                    scnr: Coin.coinsForHalf(coins: Coin.allCoins, coinType: .SCNR),
-                    matic: Coin.coinsForHalf(coins: Coin.allCoins, coinType: .MATIC),
-                    klayButton: $klayButton,
-                    scnrButton: $scnrButton,
-                    maticButton: $maticButton
-                )
+//                    LineChart(
+//                        coins: coins,
+//                        buttonDic: $buttonDic
+//                    )
                 .frame(height: 200)
                 .padding(.horizontal)
             }
