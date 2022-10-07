@@ -29,9 +29,9 @@ struct CandleStickChart: UIViewRepresentable {
 
     func setChartData(_ candleStickChart: CandleStickChartView) {
         let dataSet = CandleChartDataSet(entries: entries)
-        dataSet.decreasingColor = .systemRed
+        dataSet.decreasingColor = .systemBlue
         dataSet.decreasingFilled = true
-        dataSet.increasingColor = .systemBlue
+        dataSet.increasingColor = .systemRed
         dataSet.increasingFilled = true
         dataSet.shadowColor = .darkGray
         dataSet.shadowWidth = 0.7

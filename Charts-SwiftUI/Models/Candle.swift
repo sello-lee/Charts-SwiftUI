@@ -20,10 +20,6 @@ struct Candle {
     var open: Double
     var close: Double
 
-    static var selectedItem = Candle(value: 0, high: 0, low: 0, open: 0, close: 0)
-    static var dayArray: [String] = (1...31).map { "\($0)일" }
-    static var monthArray: [String] = (1...12).map { "\($0)월" }
-
     static func candles(for term: Term) -> [CandleChartDataEntry] {
         var temp: Double = 0
 

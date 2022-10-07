@@ -59,6 +59,11 @@ struct BarChart : UIViewRepresentable {
         
         barChart.fitBars = true
         barChart.dragXEnabled = false
+
+//        let marker:BalloonMarker = BalloonMarker(color: .gray, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0))
+//        marker.minimumSize = CGSize(width: 75, height: 35)
+//        lineChart.marker = marker
+
     }
 
     func formatXAxis(xAxis: XAxis) {

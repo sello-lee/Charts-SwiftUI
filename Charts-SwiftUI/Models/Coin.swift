@@ -45,7 +45,7 @@ struct Coin {
             Coin(month: 3, quantity: 280000, coinType: .SCNR),
             Coin(month: 4, quantity: 290000, coinType: .SCNR),
             Coin(month: 5, quantity: 295000, coinType: .SCNR),
-            Coin(month: 6, quantity: 400000, coinType: .SCNR),
+            Coin(month: 6, quantity: 410000, coinType: .SCNR),
 
             Coin(month: 0, quantity: 20000, coinType: .MATIC),
             Coin(month: 1, quantity: 20000, coinType: .MATIC),
