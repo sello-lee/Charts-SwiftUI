@@ -12,6 +12,9 @@
 		037ABB2628ED4B1C0076B8F3 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2528ED4B1C0076B8F3 /* Money.swift */; };
 		037ABB2928EE5F4E0076B8F3 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2828EE5F4E0076B8F3 /* Coin.swift */; };
 		037ABB2B28EE72970076B8F3 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB2A28EE72970076B8F3 /* Token.swift */; };
+		037ABB3E28EFC6E70076B8F3 /* Candle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB3D28EFC6E70076B8F3 /* Candle.swift */; };
+		037ABB4028EFD5190076B8F3 /* CandleStickChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB3F28EFD5190076B8F3 /* CandleStickChart.swift */; };
+		037ABB4228EFD5270076B8F3 /* CandleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ABB4128EFD5270076B8F3 /* CandleChartView.swift */; };
 		BB13C890257470C700650A1D /* CombinedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13C88F257470C700650A1D /* CombinedChartView.swift */; };
 		BB2757842576120E003022E2 /* CombinedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2757812576120E003022E2 /* CombinedMarker.swift */; };
 		BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB776A9E2568C346006BDCEF /* BalloonMarker.swift */; };
@@ -50,6 +53,9 @@
 		037ABB2528ED4B1C0076B8F3 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		037ABB2828EE5F4E0076B8F3 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		037ABB2A28EE72970076B8F3 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		037ABB3D28EFC6E70076B8F3 /* Candle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candle.swift; sourceTree = "<group>"; };
+		037ABB3F28EFD5190076B8F3 /* CandleStickChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChart.swift; sourceTree = "<group>"; };
+		037ABB4128EFD5270076B8F3 /* CandleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleChartView.swift; sourceTree = "<group>"; };
 		BB13C88F257470C700650A1D /* CombinedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartView.swift; sourceTree = "<group>"; };
 		BB2757812576120E003022E2 /* CombinedMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedMarker.swift; sourceTree = "<group>"; };
 		BB776A9E2568C346006BDCEF /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 				BB92BA0F256759E600D0FB13 /* PieChart.swift */,
 				BBD8979725688B06001404F3 /* LineChart.swift */,
 				BBB0DC01257449C4005457D8 /* CombinedChart.swift */,
+				037ABB3F28EFD5190076B8F3 /* CandleStickChart.swift */,
 			);
 			path = "Chart UIViews";
 			sourceTree = "<group>";
@@ -104,6 +111,7 @@
 				BBD53E4D2566163600C68F55 /* Transactions.swift */,
 				BB92BA1325676E8900D0FB13 /* Wine.swift */,
 				BBB0DBFD25744420005457D8 /* Sale.swift */,
+				037ABB3D28EFC6E70076B8F3 /* Candle.swift */,
 				037ABB2528ED4B1C0076B8F3 /* Money.swift */,
 				037ABB2828EE5F4E0076B8F3 /* Coin.swift */,
 				037ABB2A28EE72970076B8F3 /* Token.swift */,
@@ -129,6 +137,7 @@
 				BB92BA1625679EBC00D0FB13 /* PCView.swift */,
 				BBD8979325688AA3001404F3 /* LineChrtView.swift */,
 				BB13C88F257470C700650A1D /* CombinedChartView.swift */,
+				037ABB4128EFD5270076B8F3 /* CandleChartView.swift */,
 				BB27578E25761796003022E2 /* Markers */,
 			);
 			path = Views;
@@ -265,8 +274,10 @@
 				037ABB2928EE5F4E0076B8F3 /* Coin.swift in Sources */,
 				BBD53E4C256603F600C68F55 /* GroupedBarChart.swift in Sources */,
 				BBD8978E256857AA001404F3 /* TabbedStartView.swift in Sources */,
+				037ABB4228EFD5270076B8F3 /* CandleChartView.swift in Sources */,
 				BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */,
 				BBB0DBFE25744420005457D8 /* Sale.swift in Sources */,
+				037ABB3E28EFC6E70076B8F3 /* Candle.swift in Sources */,
 				BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */,
 				BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */,
 				037ABB2B28EE72970076B8F3 /* Token.swift in Sources */,
@@ -278,6 +289,7 @@
 				BB92BA1425676E8900D0FB13 /* Wine.swift in Sources */,
 				BBD8979425688AA3001404F3 /* LineChrtView.swift in Sources */,
 				BB92BA1725679EBC00D0FB13 /* PCView.swift in Sources */,
+				037ABB4028EFD5190076B8F3 /* CandleStickChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

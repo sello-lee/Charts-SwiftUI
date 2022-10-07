@@ -32,11 +32,17 @@ struct TabbedStartView: View {
                     Image("StackedLine")
                     Text("Stacked Line Chart")
                 }
-            CombinedChrtView()
+//            CombinedChrtView()
+//                .tabItem {
+//                    Image("StackedBarLine")
+//                    Text("Bar + Line Chart")
+//                }
+            CandleChartView()
                 .tabItem {
                     Image("StackedBarLine")
-                    Text("Bar + Line Chart")
+                    Text("Candle Stick Chart")
                 }
+
         }
     }
 }

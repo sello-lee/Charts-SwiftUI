@@ -28,6 +28,12 @@ open class BalloonMarker: MarkerImage
     fileprivate var _labelSize: CGSize = CGSize()
     fileprivate var _paragraphStyle: NSMutableParagraphStyle?
     fileprivate var _drawAttributes = [NSAttributedString.Key : Any]()
+
+    var entries: [CandleChartDataEntry] = []
+
+    func setEntries(_ entries: [CandleChartDataEntry]) {
+        self.entries = entries
+    }
     
     @objc public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets)
     {
@@ -35,7 +41,7 @@ open class BalloonMarker: MarkerImage
         self.font = font
         self.textColor = textColor
         self.insets = insets
-        
+
         _paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         _paragraphStyle?.alignment = .center
         super.init()
@@ -184,8 +190,8 @@ open class BalloonMarker: MarkerImage
     }
     
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
-        // This is the bubble text
-        setLabel("\(Int(entry.y)) for \(Coin.monthArray[Int(entry.x)])")
+        guard let selectedEntry = entries.first(where: { $0.x == entry.x }) else { return }
+        setLabel("value: \(Int(selectedEntry.bodyRange))\nopen: \(Int(selectedEntry.open))\nclose: \(Int(selectedEntry.close))\nhigh: \(Int(selectedEntry.high))\nlow: \(Int(selectedEntry.low))\n")
     }
     
     @objc open func setLabel(_ newLabel: String)
